@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 指定字符编码 -->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <!-- 定义关键词 -->
+    <meta name="Keywords" content="网易,邮箱,游戏,新闻,体育,娱乐,女性,亚运,论坛,短信" />
+    <!-- 定义描述--SEO搜索引擎化 -->
+    <meta name="Description" content="网易是中国领先的互联网技术公司，为用户提供免费邮箱、游戏、搜索引擎服务，开设新闻、娱乐、体育等30多个内容频道，及博客、视频、论坛等互动交流，网聚人的力量。" />
+    <!-- 3秒自动跳转到百度页面 -->
+    <!-- <meta http-equiv="refresh" content="3;http://www.baidu.com"> -->
+    <title>网页的标题</title>
+</head>
+<body>
+    <section>
+        <h1>必须要有标题</h1>
+        <article>对页面内容进行分块，不要用作页面容器</article>
+    </section>
+    <article>
+        <header>
+            <nav>导航栏</nav>
+        </header>
+        <section>
+            <aside>主要内容的附属信息</aside>
+            <p>
+                发布日期<time datetime="2019-05-30" pubdate>2019年5月30日</time>
+            </p>
+            <p>form 表单</p>
+            <form action="" id="test-form">
+                <input type="text" formmethod="post" placeholder="支持datalist 和autocomplete" autofocus list="greetlist" autocomplete="off" >
+                <input type="date" />
+                <input type="text" required pattern="[0-9][a-z]{3}" placeholder="一个数字和三个小写字母">
+                <input type="datetime" value="对输入的时间有效性进行校验"/>
+                <datalist id ="greetlist">
+                    <option value="morning"></option>
+                    <option value="afternoning"></option>
+                    <option value="evening"></option>
+                </datalist>
+                <input type="text" id="test">
+                <br>
+                <input type="file" accept="image/*">
+                <button id="button" type="submit" onclick="btn()">submit</button>
+                <output onforminput="20">50</output>
+            </form>
+        </section>
+        <footer>
+            <address>
+                <a href="https://www.baidu.com">百度</a>
+                <a href="https://www.baidu.com">百度</a>
+            </address>
+        </footer>
+    </article>
+    <p>绘制图形</p>
+    <canvas id="canvas"></canvas>
+    <canvas id="canvasImg"></canvas>
+    <p>绘制文字</p>
+
+</body>
+<script>
+    function btn () {
+        var ele = document.getElementById("test");
+        if(ele.value === '') {
+            alert('输入的内容为空');
+            return false
+        } 
+    }
+    draw();
+    function draw() {
+        var canvas = document.getElementById("canvas");
+        var context = canvas.getContext("2d");
+        context.fillStyle = "#ddd";
+        context.translate(200,-25);
+        context.fillStyle = "rgb(255,0,0,0.25)";
+        for (var i = 0; i < 50; i++) {
+            context.translate(20,20);// 平移
+            context.scale(0.95,0.95);//扩大
+            context.rotate(Math.PI/10);//旋转角度
+            context.fillRect(0,0,50,25);
+        }
+    }
+
+    drawImg();
+    function drawImg() {
+        var canvasImg = document.getElementById("canvasImg");
+        var context = canvasImg.getContext("2d");
+        var img = new Image();
+        img.src = "1.jpg";
+        img.onload = function() {
+            for (var i =0;i<5;i++) {
+                context.drawImage(img,0+i*20,0+i*20,100,100);
+            }
+            
+        }
+    }
+
+    
+</script>
+</html>
